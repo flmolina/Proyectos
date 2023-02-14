@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+fig, ax = plt.subplots()
+
+# Function to update the vector animation
+def update_vector(frame):
+    ax.clear()
+    # Vector end position
+    x = np.sin(frame)
+    x2=np.sin(frame+120)
+    y2=np.sin(frame+240)
+    y = 0
+    x_3=0
+    # Plotting the vector
+    ax.quiver(0, 0, x, y, angles='xy', scale_units='xy', scale=1, color='r')
+    ax.quiver(0, 0, x2, y, angles='xy', scale_units='xy', scale=1, color='blue')
+    ax.quiver(0, 0, x_3, y2, angles='xy', scale_units='xy', scale=1, color='green')
+    # Setting x and y limits
+    ax.set_xlim(-1.5, 1.5)
+    ax.set_ylim(-1.5, 1.5)
+
+ani = animation.FuncAnimation(fig, update_vector, frames=np.arange(0,1000,0.1), interval=1)
+plt.show()
